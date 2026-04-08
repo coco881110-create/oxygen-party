@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oxygen 氧氣生日週年派對 🧚🏻‍♀️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- 基礎樣式 --- */
+        :root {
+            --primary-color: #8b5e3c; /* 溫暖的香檳金 */
+            --bg-start: #fdfcfb;
+            --bg-end: #e2d1c3;
+            --text-main: #4a3e35;
+            --white-fade: rgba(255, 255, 255, 0.7);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            /* 全站設定為明體 */
+            font-family: 'Noto Serif TC', serif;
+            color: var(--text-main);
+            overflow-x: hidden;
+            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+        }
+
+        /* --- 氧氣氣泡背景動畫 --- */
+        .oxygen-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            bottom: -10%;
+            animation: float-up infinite linear;
+            filter: blur(2px);
+        }
+
+        .bubble:nth-child(1) { width: 40px; height: 40px; left: 10%; animation-duration: 8s; animation-delay: 0s; }
+        .bubble:nth-child(2) { width: 20px; height: 20px; left: 30%; animation-duration: 12s; animation-delay: 2s; }
+        .bubble:nth-child(3) { width: 60px; height: 60px; left: 55%; animation-duration: 10s; animation-delay: 4s; opacity: 0.2; }
+        .bubble:nth-child(4) { width: 30px; height: 30px; left: 80%; animation-duration: 9s; animation-delay: 6s; }
+        .bubble:nth-child(5) { width: 15px; height: 15px; left: 90%; animation-duration: 15s; animation-delay: 8s; }
+
+        @keyframes float-up {
+            0% { transform: translateY(0) scale(1); opacity: 0.5; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+        }
+
+        /* --- 主要內容區塊 --- */
+        .main-container {
+            position: relative;
+            z-index: 10;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 80px 25px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* --- 初始化動畫 --- */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.6s; }
+        .delay-3 { animation-delay: 1.2s; }
+        .delay-4 { animation-delay: 1.8s; }
+        .delay-5 { animation-delay: 2.4s; }
+
+        h1 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            letter-spacing: 1px;
+        }
+
+        .info-card {
+            background: var(--white-fade);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .info-item {
+            margin: 20px 0;
+            font-size: 1.05rem;
+        }
+
+        .info-item strong {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .special-time {
+            background: rgba(139, 94, 60, 0.1);
+            color: var(--primary-color);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+
+        .food-rules {
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(139, 94, 60, 0.2);
+            padding-top: 15px;
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        a.link {
+            color: var(--primary-color);
+            text-decoration: underline;
+            transition: color 0.3s;
+            font-weight: 700;
+        }
+
+        a.link:hover { color: #ac7e5d; }
+
+        .note-section {
+            font-size: 0.95rem;
+            margin-bottom: 50px;
+            line-height: 1.8;
+        }
+
+        /* --- 回覆按鈕 --- */
+        .rsvp-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 20px rgba(139, 94, 60, 0.3);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .rsvp-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 94, 60, 0.5);
+            background: #ac7e5d;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="oxygen-background">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <div class="main-container">
+        
+        <div class="fade-in-section delay-1">
+            <h1>Invitation</h1>
+            <h3>2026 氧氣生日週年派對 🧚🏻‍♀️</h3>
+        </div>
+
+        <div class="fade-in-section subtitle delay-2">
+            這是紀念與寶貝相遇的週年，<br>
+            也是慶祝氧氣生日的特別日子。<br>
+            誠摯邀請你，來參與這場充滿愛與酒精的紀念聚會！
+        </div>
+
+        <div class="fade-in-section info-card delay-3">
+            <div class="info-item">
+                <strong>📅 日期</strong><br>
+                2026 / 05 / 09 (Sat.)
+            </div>
+            
+            <div class="info-item">
+                <strong>🕒 時間</strong><br>
+                17:00 - 20:00<br>
+                <div class="special-time">17:00 - 19:00 專屬包場時段</div>
+            </div>
+
+            <div class="info-item">
+                <strong>📍 地點</strong><br>
+                玉露<br>
+                (台北市大同區長安西路243號1樓)<br>
+                <a href="https://maps.app.goo.gl/Zt4WXxcwfDFeEH59A" class="link" target="_blank">開啟 Google Maps 📍</a>
+            </div>
+
+            <div class="food-rules">
+                ✨ 現場僅販售酒水，歡迎<strong>自備正餐</strong>進場享用。<br>
+                ✨ 活動低消 $600 元/人。<br>
+                🍷 <a href="https://drive.google.com/drive/folders/1-5tFoAQZ2U_nJkwV1-3h1SOVKXT9ueda" class="link" target="_blank">預覽酒單</a>
+            </div>
+        </div>
+
+        <div class="fade-in-section note-section delay-4">
+            <p><strong>關於禮物：</strong><br>
+            我們心領所有祝福，婉謝實體禮物，<br>
+            人到就是最好的陪伴！</p>
+        </div>
+
+        <div class="fade-in-section delay-5" style="margin-top: 40px;">
+            <p style="font-size: 0.9rem; margin-bottom: 15px;">請於 4/11 (六) 前告知是否前往</p>
+            <a href="https://x.com/coco43561?s=11" class="rsvp-button">點擊與我聯繫 ✨</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
